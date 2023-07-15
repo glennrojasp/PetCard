@@ -1,22 +1,19 @@
 const express = require('express')
+const Veterinary = require('../models/veterinaryModel')
+
+const {createVeterinary, getClients, getSingleClient} = require('../controllers/veterinaryController')
+
 
 const router = express.Router()
 
 //Get all clients
-router.get('/', (req, res) => {
-    res.json({mssg: 'GET all clients'})
-})
+router.get('/', getClients)
 
 //Get single clients
-router.get('/:id', (req, res) => {
-    res.json({mssg: 'GET single client'})
-})
+router.get('/:id', getSingleClient)
 
 //Post single clients
-router.post('/', (req, res) => {
-    //req.body
-    res.json({mssg: 'POST a new client'})
-})
+router.post('/', createVeterinary)
 
 //DELTE single clients
 router.delete('/:id', (req, res) => {
@@ -29,6 +26,6 @@ router.patch('/:id', (req, res) => {
 })
 
 
-router.get('/', () => {})
+//router.get('/', () => {})
 
 module.exports = router
